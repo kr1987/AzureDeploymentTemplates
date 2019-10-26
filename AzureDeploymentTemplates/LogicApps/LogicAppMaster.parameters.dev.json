@@ -1,0 +1,78 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "gateway_URI": {
+      "value": "https://mysra-black.sradev.org.uk"
+    },
+    "sharepoint_site_URL": {
+      "value": "https://solicitorsregulationauth.sharepoint.com/sites/CRM-BLK"
+    },
+    "KeyVault_URI": {
+      "value": "https://kv-sra-black-dc1.vault.azure.net"
+    },
+    "RelayService_URI": {
+      "value": "https://black-relay-service.servicebus.windows.net"
+    },
+    "CRM_org_id": {
+      "value": "orgbccd17bb.crm11"
+    },
+    "dynamicscrmonline_name": {
+      "value": "dynamicscrmonline"
+    },
+    "servicebus_name": {
+      "value": "servicebus"
+    },
+    "azureblob_name": {
+      "value": "azureblob"
+    },
+    "sharepointonline_name": {
+      "value": "sharepointonline"
+    },
+    "IntegrationAccountName": {
+      "value": "SRA-Integration-Account"
+    },
+    "IntegrationAccountResourceGroupName": {
+      "value": "rg-inf-black-la-01"
+    },
+    "azuretables_name": {
+      "value": "azuretables"
+    },
+    "integration_servicebus_name": {
+      "value": "servicebus-1"
+    },
+    "SRA-FunctionApp": {
+      "value": "Black-SRA-FunctionApp"
+    },
+    "DOXIS-FunctionApp": {
+      "value": "Black-SRA-DOXIS"
+    },
+    "ReplaceBlobToCaseDocumentLink-FunctionName": {
+      "value": "ReplaceBlobToCaseDocumentLink"
+    },
+    "GetDoxisSasToken-FunctionName": {
+      "value": "GetDoxisSasToken"
+    },
+    "Notification-TransformContentTemplate-FunctionName": {
+      "value": "Notification-TransformContentTemplate"
+    },
+    "Notification-GetTemplateHTML-FunctionName": {
+      "value": "Notification-GetTemplateHTML"
+    },
+    "Notification-SendEmail-FunctionName": {
+      "value": "Notification-SendEmail"
+    },
+    "AddMonths-FunctionName": {
+      "value": "AddMonths"
+    },
+    "Get_File_Contents-URI": {
+      "value": "@{body('Parse_JSON')['uri']}"
+    },
+    "Aad_audience": {
+      "value": "00000002-0000-0000-c000-000000000000"
+    },
+    "Aad_authority": {
+      "value": "https://login.microsoftonline.com/"
+    }
+  }
+}
