@@ -38,7 +38,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(variables('templateLocation'), 'DataService-DeleteEntity.json' , parameters('_artifactsLocationSasToken'))]"
+          "uri": "[concat(variables('templateLocation'), 'LogicApps/ExampleLogicApp.json' , parameters('_artifactsLocationSasToken'))]"
         },
         //In the following sections parameters for the nested template is specified. Here we are passing the parameter from the master template to a parameter with the same name
         //Another possibility is to add a parameterlink and use "uri" for another parameter file, using the same structure, that is used to reference the template file.

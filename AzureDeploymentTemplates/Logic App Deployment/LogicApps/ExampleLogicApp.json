@@ -12,7 +12,7 @@
     {
       "type": "Microsoft.Logic/workflows",
       "apiVersion": "2016-06-01",
-      "name": "[parameters('logicAppName')]",
+      "name": "ExampleLogicApp",
       "location": "[parameters('logicAppLocation')]",
       "dependsOn": [
       ],
