@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ArmTemplateParameter": {
+      "type": "string"
+    }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2016-06-01",
+      "name": "[parameters('logicAppName')]",
+      "location": "[parameters('logicAppLocation')]",
+      "dependsOn": [
+      ],
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          //The Logic App has a seperate parameter section, and inside the Logic App, and the syntax for using logic apps inside the logic app is different that the Arm Template syntax.
+          //It is bad practice to use the Arm Template syntax inside Logic Apps, and this can also cause unwanted problems, because the normal Arm Template syntax is used for other things inside a Logic App.
+          //Therefore the best way to parametrize Logic Apps is to pass the ArmTemplateParamter to a Logic App parameter as shown below. The name of the parameter can of cause be the same or different.
+          //Inside the Logic App, the parameters are used by the syntax: @{parameters('LogicAppParameter')}
+          "parameters": {
+            "LogicAppParameter": {
+              "type": "string",
+              "defaultValue": "[parameters('ArmTemplateParameter')]"
+            },
+            "triggers": {
+            },
+            "actions": {
+            },
+            "outputs": {
+            }
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}

@@ -23,15 +23,13 @@
   <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
   <!-- vertag<:>end -->
   <ItemGroup>
-    <Content Include="azuredeploy.json" />
-    <Content Include="azuredeploy.parameters.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
-    <None Include="LogicApps\LogicAppMaster.template.json" />
-    <None Include="LogicApps\DataService-DeleteEntity.json" />
-    <None Include="LogicApps\LogicAppMaster.parameters.dev.json" />
+    <None Include="Logic App Deployment\LogicAppMaster.template.json" />
+    <None Include="Logic App Deployment\LogicApps\DataService-DeleteEntity.json" />
+    <None Include="Logic App Deployment\LogicAppMaster.parameters.dev.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ArmTemplateParameter": {
+      "defaultValue": "ExampleValue",
+      "type": "string",
+      "metadata": {
+        "description": "It is possible but optional to add metadata, such as a description to a parameter"
+      }
+    },
+    // The _artifact parameters are recognized by the deployment script, and when specified in the parameters sections, upon deployment the script asks for a blob storage to store files for staging.
+    "_artifactsLocation": {
+      "type": "string"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring"
+    },
+    "_devOpsDeployment": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "This value is used since using local deployment does not add a '/' but devops deployment does. There might be a better way of doing this."
+      }
+    }
+  },
+  "variables": {
+    "nestedTemplateApiVersion": "2019-05-01",
+    "templateLocation": "[if(parameters('_devOpsDeployment'), parameters('_artifactsLocation'), concat(parameters('_artifactsLocation'), '/'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "[variables('nestedTemplateApiVersion')]",
+      "name": "DataService-DeleteEntity",
+      "dependsOn": [
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('templateLocation'), 'DataService-DeleteEntity.json' , parameters('_artifactsLocationSasToken'))]"
+        },
+        //In the following sections parameters for the nested template is specified. Here we are passing the parameter from the master template to a parameter with the same name
+        //Another possibility is to add a parameterlink and use "uri" for another parameter file, using the same structure, that is used to reference the template file.
+        "parameters": {
+          "ArmTemplateParameter": {
+            "value": "[parameters('ArmTemplateParameter')]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
