@@ -28,8 +28,8 @@
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <None Include="Logic App Deployment\LogicAppMaster.template.json" />
-    <None Include="Logic App Deployment\LogicApps\DataService-DeleteEntity.json" />
     <None Include="Logic App Deployment\LogicAppMaster.parameters.dev.json" />
+    <None Include="Logic App Deployment\LogicApps\ExampleLogicApp.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
